@@ -11,7 +11,8 @@ def char_count(my_string):
             char_dict[char]+=1
     return char_dict
 
-
+def sort_on(dict):
+    return dict["num"]
 
 with open("books/frankenstein.txt") as f:
     file_contents = f.read()
@@ -19,11 +20,20 @@ with open("books/frankenstein.txt") as f:
 no_words = word_count(file_contents)
 frequency_char = char_count(file_contents)
 
-#char_list = []
-#for character in frequency_char:
-#    new_dict = {character:frequency_char[character]}
-#    char_list.append(new_dict)
+#print("a".isalpha())
 
-#char_list.sort(reverse=True)
-print(char_list)
-#print(f"{no_words} words found in the document")
+char_list = []
+for character in frequency_char:
+    temp_dict = {}
+    if character.isalpha():
+        temp_dict["name"] = character
+        temp_dict["num"] = frequency_char[character]
+        char_list.append(temp_dict)
+
+char_list.sort(reverse=True, key=sort_on)
+#print(char_list)
+
+print(f"{no_words} words found in the document\n")
+for entry in char_list:
+    print(f"The '{entry['name']}' was found {entry['num']} times")
+print("--- End report ---")
