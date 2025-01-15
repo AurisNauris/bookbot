@@ -12,10 +12,18 @@ def char_count(my_string):
     return char_dict
 
 
+
 with open("books/frankenstein.txt") as f:
     file_contents = f.read()
 
+no_words = word_count(file_contents)
 frequency_char = char_count(file_contents)
-#print (word_count(file_contents))
 
-print (frequency_char)
+#char_list = []
+#for character in frequency_char:
+#    new_dict = {character:frequency_char[character]}
+#    char_list.append(new_dict)
+
+#char_list.sort(reverse=True)
+print(char_list)
+#print(f"{no_words} words found in the document")
